@@ -2,7 +2,7 @@
 const Schema = mongoose.Schema;
 
 const exerciseSchema = new Schema({
-    user: {
+    username: {
         type: String,
         require: true
     },
