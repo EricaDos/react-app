@@ -1,5 +1,5 @@
 ﻿const router = require('express').Router();
-let User = require('../models/exercise.model');
+let Exercise = require('../models/exercise.model');
 
 //Incoming HTTPS get request 
 
@@ -16,7 +16,7 @@ router.route('/add').post((req, res) => {
 
     const newExercise = new Exercise({
         username,
-        descriptiom
+        description
     })
 
     newExercise.save()
