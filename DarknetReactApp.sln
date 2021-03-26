@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.809.2
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarknetReactApp", "DarknetReactApp.csproj", "{B5587BA8-87E2-4B5D-8081-3BC2154EED8E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B5587BA8-87E2-4B5D-8081-3BC2154EED8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5587BA8-87E2-4B5D-8081-3BC2154EED8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5587BA8-87E2-4B5D-8081-3BC2154EED8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5587BA8-87E2-4B5D-8081-3BC2154EED8E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FF2EA322-C048-438D-B667-483941DFBC7C}
+	EndGlobalSection
+EndGlobal
