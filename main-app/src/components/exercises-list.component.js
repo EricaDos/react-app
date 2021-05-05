@@ -6,7 +6,7 @@ export default class ExerciseList extends Component {
   render(){
     return (
       <div>
-      <p> Exercises List </p>
+      <p> Object List </p>
       </div>
     )
     }

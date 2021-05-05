@@ -6,7 +6,7 @@ export default class EditExercise extends Component {
   render(){
     return (
       <div>
-      <p> Edit Exercises </p>
+      <p> Edit Objects </p>
       </div>
     )
     }
