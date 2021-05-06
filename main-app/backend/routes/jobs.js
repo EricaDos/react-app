@@ -1,11 +1,11 @@
 const router = require('express').Router();
-let Exercise = require('../models/exercise.model');
+let Job = require('../models/job.models');
 
 //Incoming HTTPS get request
 
 router.route('/').get((req, res) => {
-    Exercise.find()
-        .then(exercises => res.json(exercises))
+    Job.find()
+        .then(jobs => res.json(jobs))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
@@ -14,35 +14,35 @@ router.route('/add').post((req, res) => {
     const description = req.body.username;
 
 
-    const newExercise = new Exercise({
+    const newJob = new Job({
         username,
         description
     })
 
-    newExercise.save()
-        .then(() => res.json('Exercise added!'))
+    newJob.save()
+        .then(() => res.json('Job added!'))
         .catch(err => res.status(400).json('Error:' + err));
 });
 
-//CRUD Application of exercises
+//CRUD Application of jobs
 router.route('/:id').get((req, res) => {
-    Exercise.findById()
-        .then(exercises => res.json(exercises))
+    Job.findById()
+        .then(jobs => res.json(jobs))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 router.route('/:id').delete((req, res) => {
-    Exercise.findByIdAndDelete(req.params.id)
-        .then(exercises => res.json('Exercise Deleted'))
+    Job.findByIdAndDelete(req.params.id)
+        .then(jobs => res.json('Job Deleted'))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 router.route('/update/:id').post((req, res) => {
-    Exercise.findById(req.params.id)
-        .then(exercise => {
-            exercise.username = req.body.username;
-            exercise.description = req.body.description;
+    Job.findById(req.params.id)
+        .then(job => {
+            job.username = req.body.username;
+            job.description = req.body.description;
 
-            exercise.save()
-                .then(exercises => res.json('Exercise Updated'))
+            job.save()
+                .then(jobs => res.json('Job Updated'))
                 .catch(err => res.status(400).json('Error: ' + err));
         })
         .catch(err => res.status(400).json('Error: ' + err));

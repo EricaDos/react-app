@@ -1,4 +1,4 @@
-﻿const express = require('express');
+const express = require('express');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const cors = require('cors');
@@ -36,15 +36,11 @@ connection.once('open', () => {
 
 const exercisesRouter = require('./routes/exercises');
 const usersRouter = require('./routes/users');
-
-//Initial routes
-// app.use("/api/v1/cleaners", cleaners)
-// app.use("*", (req, res) => res.status(404).json({error: "Not Found"})) //Wildcard and not in route file
-
-
-
+const jobsRouter = require('./routes/jobs');
+// Use routes
 app.use('/exercises', exercisesRouter);
 app.use('/users', usersRouter);
+app.use('/jobs', jobsRouter);
 
 
 app.listen(port, () => {

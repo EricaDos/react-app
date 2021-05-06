@@ -1,11 +1,11 @@
 const router = require('express').Router();
-let Exercise = require('../models/exercise.model');
+let Neighborhood = require('../models/neighborhood.model');
 
 //Incoming HTTPS get request
 
 router.route('/').get((req, res) => {
-    Exercise.find()
-        .then(exercises => res.json(exercises))
+    Neighborhood.find()
+        .then(neighborhoods => res.json(neighborhoods))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
@@ -14,35 +14,35 @@ router.route('/add').post((req, res) => {
     const description = req.body.username;
 
 
-    const newExercise = new Exercise({
+    const newNeighborhood = new Neighborhood({
         username,
         description
     })
 
-    newExercise.save()
-        .then(() => res.json('Exercise added!'))
+    newNeighborhood.save()
+        .then(() => res.json('Neighborhood added!'))
         .catch(err => res.status(400).json('Error:' + err));
 });
 
-//CRUD Application of exercises
+//CRUD Application of neighborhoods
 router.route('/:id').get((req, res) => {
-    Exercise.findById()
-        .then(exercises => res.json(exercises))
+    Neighborhood.findById()
+        .then(neighborhoods => res.json(neighborhoods))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 router.route('/:id').delete((req, res) => {
-    Exercise.findByIdAndDelete(req.params.id)
-        .then(exercises => res.json('Exercise Deleted'))
+    Neighborhood.findByIdAndDelete(req.params.id)
+        .then(neighborhoods => res.json('Neighborhood Deleted'))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 router.route('/update/:id').post((req, res) => {
-    Exercise.findById(req.params.id)
-        .then(exercise => {
-            exercise.username = req.body.username;
-            exercise.description = req.body.description;
+    Neighborhood.findById(req.params.id)
+        .then(neighborhood => {
+            neighborhood.username = req.body.username;
+            neighborhood.description = req.body.description;
 
-            exercise.save()
-                .then(exercises => res.json('Exercise Updated'))
+            neighborhood.save()
+                .then(neighborhoods => res.json('Neighborhood Updated'))
                 .catch(err => res.status(400).json('Error: ' + err));
         })
         .catch(err => res.status(400).json('Error: ' + err));

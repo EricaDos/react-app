@@ -9,18 +9,14 @@ export default class Navbar extends Component {
       <Link to="/" className="navbar-brand"> SnapClean </Link>
       <div className="collapse navbar-collapse">
       <ul className="navbar-nav mr-auto">
-        <li className="navbar-item">
-        <Link to="/" className="nav-link">Detected Objects</Link>
-        </li>
-        <li className="navbar-item">
-        <Link to="/upload" className="nav-link">Upload Image</Link>
-        </li>
-        <li className="navbar-item">
-        <Link to="/user" className="nav-link">Create Users</Link>
-        </li>
+      <li className="navbar-item">
+         <Link to="/" className="nav-link">Jobs</Link>
+         <Link to="/user" className="nav-link">Create User</Link>
+         <Link to="/edit" className="nav-link">Edit Job Listing</Link>
+         </li>
         </ul>
         </div>
-        </nav>
-    )
+      </nav>
+    );
   }
 }
