@@ -36,6 +36,14 @@ export default class JobList extends Component {
         {jobs.map(({ id, name }) => (
           <CSSTransition key={id} timeout={500} classNames="fade">
             <ListGroupItem>
+            <Button className="remove-btn" color="danger" size="sm" onClick={() => {
+              this.setState(state => ({
+                jobs: state.jobs.filter(job => job.id !== id)
+              }));
+            }}
+            >
+            &times;
+            </Button>
               {name}
             </ListGroupItem>
             </CSSTransition>
