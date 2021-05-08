@@ -5,6 +5,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Navbar from "./components/navbar.component";
 import JobList from "./components/jobs-list.component";
+// import JobModal from "./components/JobModal";
+
 // import EditJob from "./components/edit-job.component";
 // import UploadImage from "./components/upload-images.component";
 // import CreateUser from "./components/create-user.component";
@@ -18,7 +20,7 @@ function App() {
       <Router>
         <div className="container">
         <Navbar />
-        <br />
+          <br />
         <JobList />
 
         </div>

@@ -19,11 +19,9 @@ export const deleteJob = id => {
     payload: id
     };
 };
-export const addJob = job => {
-  return {
-    type: ADD_JOBS,
-    payload: job
-  };
+export const addJob = job => async dispatch => { //Async request
+  axios
+    .post('/api/jobs', job)
 };
 export const setJobsLoading = () => {
   return {
