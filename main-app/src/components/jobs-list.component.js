@@ -3,22 +3,25 @@ import React, { Component } from 'react';
 import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { v4 as uuidv4 } from 'uuid';
+import { connect } from 'react-redux';
+import { getJobs } from '../actions/jobActions';
+import PropTypes from 'prop-types';
+
 //Links to different postRoutes
 import { Link } from 'react-router-dom';
 
-export default class JobList extends Component {
-  state = {
-    jobs: [
-      { id: uuidv4(), name: 'One-Off Cleaning'},
-      { id: uuidv4(), name: 'Weekly Cleaning'},
-      { id: uuidv4(), name: 'Deep Cleaning'},
-      { id: uuidv4(), name: 'Bi-Weekly Cleaning'}
-    ]
+class JobList extends Component {
+
+//Lifecycle methods - Calling an actions
+  componentDidMount() {
+    this.props.getJobs();
   }
 
   render(){
-    const { jobs } = this.state;
+ //state_object.array
+    const { jobs } = this.props.jobs; //Destructoring
     return (
+
       <div>
       <p> Job List </p>
       <Button color="dark"
@@ -54,3 +57,16 @@ export default class JobList extends Component {
     );
     }
   }
+
+//Actions are stored as a prop
+  JobList.propTypes = {
+    getJobs: PropTypes.func.isRequired,
+    job: PropTypes.object.isRequired //Mapping redux from properties
+  }
+
+  const mapStateToProps = (state: JJobReduxProps) => ({
+    jobs: state.job
+    // isAuthenticated: state.auth.isAuthenticated
+  });
+
+  export default connect(mapStateToProps, { getJobs })(JobList);
