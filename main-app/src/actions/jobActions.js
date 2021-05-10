@@ -4,7 +4,7 @@ import { GET_JOBS, ADD_JOBS, DELETE_JOBS, JOBS_LOADING } from './types';
 export const getJobs = () => async dispatch => { //Async request
   dispatch(setJobsLoading());
   axios
-    .get('/api/jobs')
+    .get('/jobs')
     .then(res =>
       dispatch({
         type: GET_JOBS,
@@ -21,7 +21,7 @@ export const deleteJob = id => {
 };
 export const addJob = job => async dispatch => { //Async request
   axios
-    .post('/api/jobs', job)
+    .post('/')
 };
 export const setJobsLoading = () => {
   return {

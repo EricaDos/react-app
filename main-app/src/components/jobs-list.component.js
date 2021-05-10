@@ -20,9 +20,15 @@ class JobList extends Component {
   render(){
  //state_object.array
     const { jobs } = this.props.jobs; //Destructoring
+    console.log(jobs)
     return (
 
       <div>
+      {jobs.map( j => <React.Fragment key={j.id}>
+        <h6 >{j.name}</h6>
+      </React.Fragment>
+      )}
+
       <p> Job List </p>
       <Button color="dark"
       onClick={() => {

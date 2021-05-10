@@ -17,7 +17,7 @@ function App() {
     return (
       <Provider store={store}>
 
-      <Router>
+      // <Router>
         <div className="container">
         <Navbar />
           <br />
@@ -25,7 +25,7 @@ function App() {
 
         </div>
 
-      </Router>
+      // </Router>
       </Provider>
   );
 }

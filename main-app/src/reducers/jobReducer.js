@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import { GET_JOBS, ADD_JOBS, DELETE_JOBS, JOBS_LOADING } from '../actions/types';
+
 const initialState = {
   jobs: [],
   loading: false
