@@ -10,6 +10,7 @@ router.route('/').get((req, res) => {
         .then(jobs => res.json(jobs))
         .catch(err => res.status(400).json('Error: ' + err));
 });
+
 router.route('/').post((req, res) => {
   const newJob = new Job({
     name: req.body.name
@@ -19,12 +20,17 @@ router.route('/').post((req, res) => {
 });
 
 
+router.delete('http://localhost:3000/:id', (req, res) => {
+  Job.findById(req.paramas.id)
+  .then(job => job.remove().then(() => res.json({ success: true})))
+  .catch(err => res.status(404).json({ success: false }));
+})
 
-router.route('/:id').delete((req, res) => {
-    Job.findByIdAndDelete(req.params.id) //Fetching from uri
-        .then(jobs => res.json('Job Deleted')) //Ensures its able to delette
-        .catch(err => res.status(400).json('Error: ' + err));
-});
+// router.route('/:id').delete((req, res) => {
+//     Job.findByIdAndDelete(req.params.id) //Fetching from uri
+//         .then(jobs => res.json('Job Deleted')) //Ensures its able to delette
+//         .catch(err => res.status(400).json('Error: ' + err));
+// });
 router.route('/update/:id').post((req, res) => {
     Job.findById(req.params.id)
         .then(job => {

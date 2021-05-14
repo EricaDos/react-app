@@ -13,15 +13,24 @@ export const getJobs = () => async dispatch => { //Async request
     )
 };
 
-export const deleteJob = id => {
-  return {
-    type: DELETE_JOBS,
-    payload: id
-    };
+
+export const deleteJob = id => dispatch => {
+  axios
+  .delete(`/jobs/${this.state.id}`)
+  .then(res =>
+    dispatch({
+      type: DELETE_JOBS,
+      payload: id
+    })
+  )
 };
 export const addJob = job => async dispatch => { //Async request
   axios
-    .post('/')
+    .post('/jobs', job)
+    .then(res => dispatch({
+      type: ADD_JOBS
+    })
+  )
 };
 export const setJobsLoading = () => {
   return {

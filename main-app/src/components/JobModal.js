@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap';
 import { connect } from 'react-redux';
 import { addJob } from '../actions/jobActions';
-// import { JJobReduxProps, JJobModal, ITarget } from '../types/interfaces';
+import { JJobReduxProps, JJobModal, ITarget } from '../components';
 
 
 class JobModal extends Component{
@@ -16,15 +16,29 @@ class JobModal extends Component{
     });
   }
 
-  onChange = (e) => {
+  onChange = e => {
     this.setState({ [e.target.name]: e.target.value}); //refers to value of name below and getting it from target
-  }
+  };
+
+  onSubmit = e => {
+    e.preventDefault();
+
+    const newJob = {
+
+      name: this.state.name
+    };
+
+    this.props.addJob(newJob); // Adding job via AddJob action
+
+    //Close Modal
+    this.toggle();
+    }
 
   render(){
     return (
       <div>
 
-        <Modal isOpen={modal} toggle={handleToggle}>
+        <Modal isOpen={this} toggle={handleToggle}>
           <ModalHeader toggle={handleToggle}>Add To Job List</ModalHeader>
           <ModalBody>
             <Form onSubmit={handleOnSubmit}>
@@ -37,8 +51,10 @@ class JobModal extends Component{
                   placeholder="Add Job"
                   onChange={handleChangeName}
                 />
-                <Button color="dark" style={{ marginTop: '2rem' }} block>
+                <Button color="dark" style={{ marginTop: '2rem' }} onClick={this.toggle}>
                   Add Job
+
+
                 </Button>
               </FormGroup>
             </Form>

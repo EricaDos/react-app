@@ -14,23 +14,23 @@ export default function(state = initialState, action){
         jobs: action.payload, //copy with new items
         loading: false
       };
-      case DELETE_JOBS:
-        return {
-          ...state,
-          jobs: state.jobs.filter(item => item.id !== action.payload)
-        };
-      case ADD_JOBS:
-        return {
-          ...state,
-          jobs: [action.payload,...state.jobs]
-      };
-      case JOBS_LOADING:
-      return{
+    case DELETE_JOBS:
+      return {
         ...state,
-        loading: true
+        jobs: state.jobs.filter(job => job._id !== action.payload)
       };
-      default:
-        return state;
+    case ADD_JOBS:
+      return {
+        ...state,
+        jobs: [action.payload,...state.jobs]
+    };
+    case JOBS_LOADING:
+    return{
+      ...state,
+      loading: true
+    };
+    default:
+      return state;
   }
 
 }

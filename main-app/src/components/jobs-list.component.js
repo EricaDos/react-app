@@ -4,53 +4,41 @@ import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { v4 as uuidv4 } from 'uuid';
 import { connect } from 'react-redux';
-import { getJobs } from '../actions/jobActions';
+import { getJobs, deleteJob } from '../actions/jobActions';
 import PropTypes from 'prop-types';
 
 //Links to different postRoutes
 import { Link } from 'react-router-dom';
+
+
 
 class JobList extends Component {
 
 //Lifecycle methods - Calling an actions
   componentDidMount() {
     this.props.getJobs();
+    
+
   }
+
 
   render(){
  //state_object.array
     const { jobs } = this.props.jobs; //Destructoring
+
     console.log(jobs)
+
     return (
 
       <div>
-      {jobs.map( j => <React.Fragment key={j.id}>
-        <h6 >{j.name}</h6>
-      </React.Fragment>
-      )}
-
       <p> Job List </p>
-      <Button color="dark"
-      onClick={() => {
-        const name = prompt('Enter Job');
-        if(name) {
-          this.setState(state => ({
-            jobs: [...state.jobs, {id: uuidv4(), name}]
-          }));
-        }
-      }}
-      >Add Job</Button>
+
       <ListGroup>
         <TransitionGroup className="job-list">
-        {jobs.map(({ id, name }) => (
-          <CSSTransition key={id} timeout={500} classNames="fade">
+        {jobs.map(({ _id, name }) => (
+          <CSSTransition key={_id} timeout={500} classNames="fade">
             <ListGroupItem>
-            <Button className="remove-btn" color="danger" size="sm" onClick={() => {
-              this.setState(state => ({
-                jobs: state.jobs.filter(job => job.id !== id)
-              }));
-            }}
-            >
+            <Button className="remove-btn" color="danger" size="sm" onClick={() => {}} >
             &times;
             </Button>
               {name}
@@ -67,7 +55,8 @@ class JobList extends Component {
 //Actions are stored as a prop
   JobList.propTypes = {
     getJobs: PropTypes.func.isRequired,
-    job: PropTypes.object.isRequired //Mapping redux from properties
+    job: PropTypes.object.isRequired, //Mapping redux from properties
+    deleteJob: PropTypes.object.isRequired
   }
 
   const mapStateToProps = (state: JJobReduxProps) => ({
